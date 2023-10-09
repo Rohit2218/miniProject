@@ -4,7 +4,6 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.all
-    # render template: "posts/index.html.erb", layout: "application"
   end
 
   # GET /posts/1 or /posts/1.json
@@ -45,38 +44,12 @@ class PostsController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
-    end  
+    end
   end
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy
-    Register for Live Session "How to Nail Any Interview" on Oct 3 at 2PM ET OR Oct 6 at 4PM ET!
-    
-    Jump into our new React Basics course 😎
-    
-    Supplement your learning with our Career Toolbox Track's career advice, resume tips, and more 🧰
-    
-    Probe The AI Multiverse: Exploring the Subfields of Artificial Intelligence 😮
-    
-    Students: got a cool project or resource to share? Submit it to Treehouse Links! 🤩
-    
-    Learn about our new Community Discord server here and join us on Discord here!
-    
-    🤖 Check out all our AI content here 👀
-    
-    Register for Live Session "How to Nail Any Interview" on Oct 3 at 2PM ET OR Oct 6 at 4PM ET!
-    
-     Home
-    Tracks
-    Library
-    Community
-    Support
-    Jobs
-    Workspaces
-    ￼4,846
-    Ready to take your learning to the next level?
-    
 
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
@@ -92,6 +65,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title,:body)
+      params.require(:post).permit(:title, :body)
     end
 end

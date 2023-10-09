@@ -1,41 +1,51 @@
 class PagesController < ApplicationController
+    before_action :set_page,except: [:index,:new,:create]
+
     def index
         @pages = Page.all
     end
 
     def show
-        @page = Page.find(params[:id])
-        # render plain: @page.title  
+        # set_page
     end
 
-    #function to create new
     def new
         @page = Page.new
     end
 
-
-    # function to create blog pages
-    def create
+    def create                                                                                                                                                                                                                                                                                                                                     
         @page = Page.new(page_params)
         @page.save
-        redirect_to @page
+        redirect_to pages_path
     end
 
-    # function to edit the blog pages
-    def edit
-        @page = Page.find(params[:id])
+    def edit_page
+        # set_page 
     end
 
     def update
-        @page = Page.find(params[:id])
+        # set_page
         @page.update(page_params)
         redirect_to @page
     end
 
-    #making the function private
+    def destroy
+        puts "hello this destroy zone"
+        # set_page
+        #destroying the current page 
+        @page.destroy
+        puts "dkjhxg"
+        redirect_to pages_path
+      end
+
+
     private
 
-        def page_params
-            params.require(:page).permit(:title,:body,:slug)
-        end
+    def page_params
+        params.require(:page).permit(:title,:body,:slug)
+    end
+    
+    def set_page
+        @page = Page.find(params[:id])
+    end 
 end
